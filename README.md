@@ -1,25 +1,21 @@
-<style TYPE="text/css">
-code.has-jax {font: inherit; font-size: 100%; background: inherit; border: inherit;}
-</style>
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
-});
-</script>
-<script type="text/javascript" async src="path-to-mathjax/MathJax.js?config=TeX-AMS_CHTML"></script>
-<script type="text/javascript" async
-  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-
-
-Joyful Deep Learning
+Joyful Deep Learning - I
 =========================
 
-This repository is a collection of my useful resources of Deep Learning in Tensorflow, in 5 sections.
+This repository is a collection of my useful resources of Deep Learning in Tensorflow, in 5 sections:
 
-# Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy
+1. [Machine Learning and Deep Learning Basics in Math and Numpy](#sec1)
+2. [Deep Learning Basics in Math, Numpy and Scikit-Learn](#sec2)
+3. [Deep Learning Basics in Tensoflow](#sec3)
+4. [Deep Learning Advanced  in Tensoflow](#sec4)
+5. [Idle](#sec5)
+
+It would be really grateful to contribute to/clone this repository, commercial uses are not welcomed. Thanks for the help of [Prof.Brian Kulis](http://www.bu.edu/eng/profile/brian-kulis/) and [Prof.Kate Saenko](http://vision.cs.uml.edu/ksaenko.html) and TFs of CS591-S2 (Deep Learning) at Boston University. Of course also thanks to Google's Open Source Tensorflow!
+
+All results in Jupyter-Notebook are trained under GTX 1070, training CPUs may cost much more time.
+
+
+<a name="sec1"></a>
+## [Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb)
 
 * **Coding requirements:**
 
@@ -86,7 +82,8 @@ import matplotlib.cm as cm
 
 * **Logistic Regression implementation**
 
-# Section 2 Content - Deep Learning Basics in Math, Numpy and Scikit-Learn
+<a name="sec2"></a>
+## [Section 2 Content - Deep Learning Basics in Math, Numpy and Scikit-Learn (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section2/Section2.ipynb)
 
 * **Coding requirements:**
 
@@ -98,8 +95,198 @@ from scipy.misc import imread
 from sklearn.datasets import fetch_mldata
 
 ```
-# Section 3 Content 
 
-# Section 4 Content 
+* **Cross-Entropy and Softmax mathematical derivation:**
+    
+    + Minimizing the multiclass cross-entropy loss function to obtain the maximum likelihood estimate of the parameters $\theta$:
 
-# Section 5 Content 
+        - $L(\theta)= - \frac{1}{N}\sum_{i=1}^{N} \sum_{k=1}^{K} y_{ik} \log(h_k(x_i,\theta))$ where $N$ is the number of examples $\{x_i,y_i\}$
+
+* **Simple Regularization Methods:**
+
+    + *L2* regularization
+
+    + *L1* regularization
+
+* **Backprop in a simple MLP - Multi-layer perceptron's mathematical derivation:**
+
+<p align="center">
+  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s2_mlp.png?raw=true"/>
+</p>
+
+* **XOR problem - A Neural network to solve the XOR problem:** (*This is a really good example to help us understand the essence of neural networks*)
+
+<p align="center">
+  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s2_xor.png?raw=true"/>
+</p>
+
+* **Implementing a simple MLP - Implement a MLP by hand in numpy and scipy**
+
+    + Common useful activation functions implementation escaped from numerical accuracy problems:
+
+        - softplus function:
+
+                import numpy as np
+
+                    def softplus(x):
+                        return np.logaddexp(0, x)
+
+                    def derivative_softplus(x):
+                        return np.exp(-np.logaddexp(0,-z))
+                        
+        - sigmoid function:
+
+                import numpy as np
+
+                    def sigmoid(x):
+                        return np.exp(-np.logaddexp(0, -x))
+
+                    def derivative_sigmoid(x):
+                        return np.multiply(np.exp(-np.logaddexp(0, -x)), (1.-np.exp(-np.logaddexp(0, -x))))
+
+        - relu function:
+
+                import numpy as np
+
+                    def relu(x):
+                        return np.maximum(0, x)
+
+                    def derivative_relu(x):
+                        for i in range(0, len(x)):
+                            for k in range(len(x[i])):
+                                if x[i][k] > 0:
+                                    x[i][k] = 1
+                                else:
+                                    x[i][k] = 0
+                        return x
+
+    + Forward pass implementation
+
+    + Backward pass implementation
+
+    + Test MLP on MNIST dataset and its visualization
+
+<a name="sec3"></a>
+## [Section 3 Content - Deep Learning Basics in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section3/Section3.ipynb)
+
+* **Coding requirements:**
+
+```python
+# Python 3.5+
+import numpy as np
+
+# tensorflow-gpu==1.0.1 or tensorflow==1.0.1
+import tensorflow as tf
+
+from matplotlib import pyplot as plt
+
+# Scikit-learn's TSNE is relatively slow, use BHTSNE as a faster alternative:
+# https://github.com/dominiek/python-bhtsne
+from sklearn.manifold import TSNE
+```
+
+* **MNIST Softmax Classifier Demo in TensorFlow**
+
+* **Building Neural Networks with the power of `Variable Scope` - MLP in TensorFlow:**
+
+    With the power of **variable scope**, we can implement a very flexible MLP in tensorflow without hard-code the layers and weights:
+
+```python
+def mlp(x, hidden_sizes, activation_fn=tf.nn.relu):
+    
+    '''
+    Inputs:
+        x: an input tensor of the images in the current batch [batch_size, 28x28]
+        hidden_sizes: a list of the number of hidden units per layer. For example: [5,2] means 5 hidden units in the first layer, and 2 hidden units in the second (output) layer. (Note: for MNIST, we need hidden_sizes[-1]==10 since it has 10 classes.)
+        activation_fn: the activation function to be applied
+
+    Output:
+        a tensor of shape [batch_size, hidden_sizes[-1]].
+    '''
+    if not isinstance(hidden_sizes, (list, tuple)):
+        raise ValueError("hidden_sizes must be a list or a tuple")
+        
+    # Number of layers
+    L = len(hidden_sizes)
+
+    for l in range(L):
+
+        with tf.variable_scope("layer"+str(l)):
+            
+            # Create variable named "weights".
+            if l == 0:
+                weights = tf.get_variable("weights", shape= [x.shape[1], hidden_sizes[l]], dtype=tf.float32, initializer=None)
+            else:
+                weights = tf.get_variable("weights", shape= [hidden_sizes[l-1], hidden_sizes[l]], dtype=tf.float32, initializer=None)
+
+            # Create variable named "biases".
+            biases = tf.get_variable("biases", shape=[hidden_sizes[l]], dtype=tf.float32, initializer=None)
+
+            # Pre-Actiation Layer
+            if l == 0:
+                pre_activation = tf.add(tf.matmul(x, weights), biases)
+            else:
+                pre_activation = tf.add(tf.matmul(activated_layer, weights), biases)
+
+            # Activated Layer
+            if l == L-1:
+                activated_layer = pre_activation
+            else:
+                activated_layer = activation_fn(pre_activation)
+    return activated_layer
+```
+
+* **Siamese Network in TensorFlow**
+
+<p align="center">
+  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s3_siamese.png?raw=true"/>
+</p>
+
+* **Visualize learned features of Siamese Network with T-SNE**
+
+<p align="center">
+  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s3_tsne.png?raw=true"/>
+</p>
+
+
+<a name="sec4"></a>
+## [Section 4 Content - Deep Learning Advanced  in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb)
+
+* **Coding requirements:**
+
+```python
+# Python 3.5+
+import numpy as np
+import scipy
+import scipy.io
+
+# tensorflow-gpu==1.0.1 or tensorflow==1.0.1
+import tensorflow as tf
+
+from matplotlib import pyplot as plt
+
+# Scikit-learn's TSNE is relatively slow, use BHTSNE as a faster alternative:
+# https://github.com/dominiek/python-bhtsne
+from sklearn.manifold import TSNE
+```
+
+* **Building and training a convolutional network in Tensorflow with `tf.layers/tf.contrib`**
+
+* **Building and training a convolutional network by hand in Tensorflow with `tf.nn`**
+
+* **Saving and Reloading Model Weights in Tensorflow**
+
+* **Fine-tuning a pre-trained network**
+
+* **Visualizations using Tensorboard:**
+
+    + Visualize Filters/Kernels
+
+    + Visualize Loss
+
+    + Visualize Accuracy
+
+
+<a name="sec5"></a>
+## [Section 5 Content (click to view full notebook)]()
+
