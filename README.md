@@ -13,6 +13,7 @@ It would be really grateful to contribute to/clone this repository, commercial u
 
 All results in Jupyter-Notebook are trained under GTX 1070, training CPUs may cost much more time.
 
+This readme file is supported by [readme2tex](https://github.com/leegao/readme2tex)
 
 <a name="sec1"></a>
 <h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb">Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)</a></h2>
@@ -75,8 +76,7 @@ import matplotlib.cm as cm
 
         - Deriavation: <img alt="$\frac{\partial\text{loss}(\theta)}{\partial \theta} = -2X^T (Y-X\theta)$" src="svgs/63348dde1425d4b5baba614715f782a2.png?invert_in_darkmode" align=middle width="184.23372pt" height="33.14091000000001pt"/>
 
-        - Deriavation: 
-        <img alt="$\theta_{MLE} = (X^T X)^{-1} X^T Y$" src="svgs/ca3e9320514eecdd426cae0a7c94edb2.png?invert_in_darkmode" align=middle width="172.268745pt" height="27.598230000000008pt"/>
+        - Deriavation: <img alt="$\theta_{MLE} = (X^T X)^{-1} X^T Y$" src="svgs/ca3e9320514eecdd426cae0a7c94edb2.png?invert_in_darkmode" align=middle width="172.268745pt" height="27.598230000000008pt"/>
 
 * **Logistic Regression mathematical derivation**
 
