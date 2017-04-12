@@ -9,11 +9,26 @@ This repository is a collection of my useful resources of Deep Learning in Tenso
 4. [Deep Learning Advanced  in Tensoflow](#sec4)
 5. [Idle](#sec5)
 
+
+
 It would be really grateful to contribute to/clone this repository, commercial uses are not welcomed. Thanks for the help of [Prof.Brian Kulis](http://www.bu.edu/eng/profile/brian-kulis/) and [Prof.Kate Saenko](http://vision.cs.uml.edu/ksaenko.html) and TFs of CS591-S2 (Deep Learning) at Boston University. Of course also thanks to Google's Open Source Tensorflow!
 
 All results in Jupyter-Notebook are trained under GTX 1070, training CPUs may cost much more time.
 
 This readme file is supported by [readme2tex](https://github.com/leegao/readme2tex)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
 
 <a name="sec1"></a>
 <h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb">Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)</a></h2>
