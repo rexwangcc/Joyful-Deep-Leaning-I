@@ -30,23 +30,23 @@ import matplotlib.cm as cm
 
 * **Closed-Form Maximum Likelihood mathematical derivation:**
 
-    + <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/svgs/e569bf2f55e8050e6d778a5424437294.svg?invert_in_darkmode" align=middle width=120.44191500000001pt height=27.852989999999977pt/> for <img src="svgs/92106cc04e070ebc1780e6da06cd51b6.svg?invert_in_darkmode" align=middle width=39.418335pt height=21.10812pt/>
+    + <img alt="$P(x \ | \ \theta) = \theta e^{-\theta x}$" src="svgs/e569bf2f55e8050e6d778a5424437294.png?invert_in_darkmode" align=middle width="120.44191500000001pt" height="27.852989999999977pt"/> for <img alt="$x \geq 0$" src="svgs/92106cc04e070ebc1780e6da06cd51b6.png?invert_in_darkmode" align=middle width="39.418335pt" height="21.10812pt"/>
 
-    + <img src="svgs/e67248bfc0ca777acca8a8424eb0cc37.svg?invert_in_darkmode" align=middle width=89.005455pt height=27.720329999999983pt/> for <img src="svgs/261d4cde744b07a079970d5243f18a7d.svg?invert_in_darkmode" align=middle width=69.431175pt height=22.745910000000016pt/>
+    + <img alt="$P(x \ | \ \theta) = \frac{1}{\theta}$" src="svgs/e67248bfc0ca777acca8a8424eb0cc37.png?invert_in_darkmode" align=middle width="89.005455pt" height="27.720329999999983pt"/> for <img alt="$ 0 \leq x \leq \theta$" src="svgs/261d4cde744b07a079970d5243f18a7d.png?invert_in_darkmode" align=middle width="69.431175pt" height="22.745910000000016pt"/>
 
 * **Gradient for Maximum Likelihood Estimation mathematical derivation:**
     
     + Gradients for log-likelihood of the following model:
 
-        - we have <img src="svgs/31fcff5b0e78f373e638ada8861be796.svg?invert_in_darkmode" align=middle width=74.603265pt height=27.852989999999977pt/> - constant data matrix, <img src="svgs/eb9d118bc54ee2366c55493ee8aabe04.svg?invert_in_darkmode" align=middle width=14.573460000000003pt height=14.55728999999999pt/> - vector corresponding to a single data point
+        - we have <img alt="$X \in \mathbf R^{n \times k}$" src="svgs/31fcff5b0e78f373e638ada8861be796.png?invert_in_darkmode" align=middle width="74.603265pt" height="27.852989999999977pt"/> - constant data matrix, <img alt="$\mathbf x_i$" src="svgs/eb9d118bc54ee2366c55493ee8aabe04.png?invert_in_darkmode" align=middle width="14.573460000000003pt" height="14.55728999999999pt"/> - vector corresponding to a single data point
 
-        - <img src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode" align=middle width=8.143030500000002pt height=22.745910000000016pt/> is a <img src="svgs/63bb9849783d01d91403bc9a5fea12a2.svg?invert_in_darkmode" align=middle width=9.041505pt height=22.745910000000016pt/>-dimensional (unknown) weight vector
+        - <img alt="$\theta$" src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.png?invert_in_darkmode" align=middle width="8.143030500000002pt" height="22.745910000000016pt"/> is a <img alt="$k$" src="svgs/63bb9849783d01d91403bc9a5fea12a2.png?invert_in_darkmode" align=middle width="9.041505pt" height="22.745910000000016pt"/>-dimensional (unknown) weight vector
 
-        - <img src="svgs/7066e6b06265b54d66e0e86af9540a85.svg?invert_in_darkmode" align=middle width=106.936995pt height=24.56552999999997pt/> is a <img src="svgs/55a049b8f161ae7cfeb0197d75aff967.svg?invert_in_darkmode" align=middle width=9.830040000000002pt height=14.102549999999994pt/>-dimensional (unknown) noise vector
+        - <img alt="$\varepsilon \sim \text{Student}(v)$" src="svgs/7066e6b06265b54d66e0e86af9540a85.png?invert_in_darkmode" align=middle width="106.936995pt" height="24.56552999999997pt"/> is a <img alt="$n$" src="svgs/55a049b8f161ae7cfeb0197d75aff967.png?invert_in_darkmode" align=middle width="9.830040000000002pt" height="14.102549999999994pt"/>-dimensional (unknown) noise vector
 
-        - and we observe vector <img src="svgs/d6ac5774c6ea62f6121ee0f02fd47e4b.svg?invert_in_darkmode" align=middle width=82.75509pt height=22.745910000000016pt/>
+        - and we observe vector <img alt="$\mathbf y = X\theta + \varepsilon$" src="svgs/d6ac5774c6ea62f6121ee0f02fd47e4b.png?invert_in_darkmode" align=middle width="82.75509pt" height="22.745910000000016pt"/>
 
-        - <p align="center"><img src="svgs/6cf71cdcab445dace4fe24c91db57650.svg?invert_in_darkmode" align=middle width=332.8182pt height=40.754504999999995pt/></p>
+        - <p align="center"><img alt="$$ P(y_i \ | \ \mathbf x_i, \theta, v) = \frac{1}{Z(v)} \Big(1 + \frac{(\theta^T \mathbf x_i - y_i) ^2}{v}\Big)^{-\frac{v+1}{2}}$$" src="svgs/6cf71cdcab445dace4fe24c91db57650.png?invert_in_darkmode" align=middle width="332.8182pt" height="40.754504999999995pt"/></p>
 
     + Stochastic Gradient Descent Implementation
 
@@ -54,28 +54,28 @@ import matplotlib.cm as cm
     
     + Multivariate Gaussian:
 
-        - <img src="svgs/e53b5bde0af9d03f0a3cf84561e9c432.svg?invert_in_darkmode" align=middle width=675.14337pt height=37.803480000000015pt/>
+        - <img alt="$ \frac{\partial \mathcal L(\Sigma)}{\partial \Sigma} = -\frac12 \left( \frac{1}{|\Sigma|} |\Sigma| \Sigma^{-T}  - \Sigma^{-T} (x- \bar \mu)(x-\bar \mu)^T\Sigma^{-T} \right) =  -\frac12 \left(\Sigma^{-T}  - \Sigma^{-T} (x- \bar \mu)(x-\bar \mu)^T\Sigma^{-T} \right)$" src="svgs/e53b5bde0af9d03f0a3cf84561e9c432.png?invert_in_darkmode" align=middle width="675.14337pt" height="37.803480000000015pt"/>
 
     + Multi-target Linear Regression model:
 
-        - we have <img src="svgs/31fcff5b0e78f373e638ada8861be796.svg?invert_in_darkmode" align=middle width=74.603265pt height=27.852989999999977pt/> is a constant data matrix
+        - we have <img alt="$X \in \mathbf R^{n \times k}$" src="svgs/31fcff5b0e78f373e638ada8861be796.png?invert_in_darkmode" align=middle width="74.603265pt" height="27.852989999999977pt"/> is a constant data matrix
 
-        - <img src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode" align=middle width=8.143030500000002pt height=22.745910000000016pt/> is a <img src="svgs/36290fecb73181e2ffc443f92d17d1bb.svg?invert_in_darkmode" align=middle width=43.466115pt height=22.745910000000016pt/>-dimentional weight matrix
+        - <img alt="$\theta$" src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.png?invert_in_darkmode" align=middle width="8.143030500000002pt" height="22.745910000000016pt"/> is a <img alt="$k \times m$" src="svgs/36290fecb73181e2ffc443f92d17d1bb.png?invert_in_darkmode" align=middle width="43.466115pt" height="22.745910000000016pt"/>-dimentional weight matrix
 
-        - <img src="svgs/f6fcf8a0c6c05d839a1b5055209d7997.svg?invert_in_darkmode" align=middle width=100.81730999999999pt height=24.56552999999997pt/> is a normal noise (<img src="svgs/b44013e0c84e47c8475cc4bc078107a1.svg?invert_in_darkmode" align=middle width=134.07702pt height=24.56552999999997pt/>)
+        - <img alt="$\varepsilon_{ij} \sim \mathcal N(0, \sigma_\epsilon)$" src="svgs/f6fcf8a0c6c05d839a1b5055209d7997.png?invert_in_darkmode" align=middle width="100.81730999999999pt" height="24.56552999999997pt"/> is a normal noise (<img alt="$i \in [0; n], j \in [0;m]$" src="svgs/b44013e0c84e47c8475cc4bc078107a1.png?invert_in_darkmode" align=middle width="134.07702pt" height="24.56552999999997pt"/>)
 
-        - and we observe a matrix <img src="svgs/bf6feeef5a1a3ac6a62fb23d2603cb69.svg?invert_in_darkmode" align=middle width=149.841285pt height=26.124119999999984pt/>
+        - and we observe a matrix <img alt="$Y = X\theta + \varepsilon \in \mathbf R^{n \times m}$" src="svgs/bf6feeef5a1a3ac6a62fb23d2603cb69.png?invert_in_darkmode" align=middle width="149.841285pt" height="26.124119999999984pt"/>
 
-        - <p align="center"><img src="svgs/68a4bfa409aad95a73cb3ef68cb7520c.svg?invert_in_darkmode" align=middle width=182.3316pt height=16.376943pt/></p>
+        - <p align="center"><img alt="$$\varepsilon = Y - X\theta \sim \mathcal N_n(0, \sigma_\epsilon I)$$" src="svgs/68a4bfa409aad95a73cb3ef68cb7520c.png?invert_in_darkmode" align=middle width="182.3316pt" height="16.376943pt"/></p>
 
-        - <p align="center"><img src="svgs/a0793fe6d8a7f414ab981012609eedb1.svg?invert_in_darkmode" align=middle width=375.71985pt height=16.376943pt/></p>
+        - <p align="center"><img alt="$$\mathcal L(\theta) = \log P(Y - X\theta \ | \ \theta) = \log \mathcal N_n(Y - X\theta \ | \ 0, \sigma_\epsilon I)$$" src="svgs/a0793fe6d8a7f414ab981012609eedb1.png?invert_in_darkmode" align=middle width="375.71985pt" height="16.376943pt"/></p>
 
-        - <p align="center"><img src="svgs/5968614cfb104b54ad4490800f53095b.svg?invert_in_darkmode" align=middle width=457.51695pt height=24.905594999999998pt/></p>
+        - <p align="center"><img alt="$$\theta_{MLE} = \arg \max_{\theta} \mathcal L(\theta) = \arg \min_{\theta} \text{loss}(\theta) = \arg \min_{\theta} \big( ||Y-X\theta||^2_F \big)$$" src="svgs/5968614cfb104b54ad4490800f53095b.png?invert_in_darkmode" align=middle width="457.51695pt" height="24.905594999999998pt"/></p>
 
-        - Deriavation: <img src="svgs/63348dde1425d4b5baba614715f782a2.svg?invert_in_darkmode" align=middle width=184.23372pt height=33.14091000000001pt/>
+        - Deriavation: <img alt="$\frac{\partial\text{loss}(\theta)}{\partial \theta} = -2X^T (Y-X\theta)$" src="svgs/63348dde1425d4b5baba614715f782a2.png?invert_in_darkmode" align=middle width="184.23372pt" height="33.14091000000001pt"/>
 
         - Deriavation: 
-        <img src="svgs/ca3e9320514eecdd426cae0a7c94edb2.svg?invert_in_darkmode" align=middle width=172.268745pt height=27.598230000000008pt/>
+        <img alt="$\theta_{MLE} = (X^T X)^{-1} X^T Y$" src="svgs/ca3e9320514eecdd426cae0a7c94edb2.png?invert_in_darkmode" align=middle width="172.268745pt" height="27.598230000000008pt"/>
 
 * **Logistic Regression mathematical derivation**
 
@@ -98,9 +98,9 @@ from sklearn.datasets import fetch_mldata
 
 * **Cross-Entropy and Softmax mathematical derivation:**
     
-    + Minimizing the multiclass cross-entropy loss function to obtain the maximum likelihood estimate of the parameters <img src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.svg?invert_in_darkmode" align=middle width=8.143030500000002pt height=22.745910000000016pt/>:
+    + Minimizing the multiclass cross-entropy loss function to obtain the maximum likelihood estimate of the parameters <img alt="$\theta$" src="svgs/27e556cf3caa0673ac49a8f0de3c73ca.png?invert_in_darkmode" align=middle width="8.143030500000002pt" height="22.745910000000016pt"/>:
 
-        - <img src="svgs/e8f0fe3e582f1f3ffe16e13dd8e386ec.svg?invert_in_darkmode" align=middle width=290.002845pt height=32.19743999999999pt/> where <img src="svgs/f9c4988898e7f532b9f826a75014ed3c.svg?invert_in_darkmode" align=middle width=14.944050000000002pt height=22.381919999999983pt/> is the number of examples <img src="svgs/e187a9ac17643462c5faecf4772fc9ba.svg?invert_in_darkmode" align=middle width=52.00073999999999pt height=24.56552999999997pt/>
+        - <img alt="$L(\theta)= - \frac{1}{N}\sum_{i=1}^{N} \sum_{k=1}^{K} y_{ik} \log(h_k(x_i,\theta))$" src="svgs/e8f0fe3e582f1f3ffe16e13dd8e386ec.png?invert_in_darkmode" align=middle width="290.002845pt" height="32.19743999999999pt"/> where <img alt="$N$" src="svgs/f9c4988898e7f532b9f826a75014ed3c.png?invert_in_darkmode" align=middle width="14.944050000000002pt" height="22.381919999999983pt"/> is the number of examples <img alt="$\{x_i,y_i\}$" src="svgs/e187a9ac17643462c5faecf4772fc9ba.png?invert_in_darkmode" align=middle width="52.00073999999999pt" height="24.56552999999997pt"/>
 
 * **Simple Regularization Methods:**
 
