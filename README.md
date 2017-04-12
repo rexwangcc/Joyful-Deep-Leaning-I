@@ -15,7 +15,8 @@ All results in Jupyter-Notebook are trained under GTX 1070, training CPUs may co
 
 
 <a name="sec1"></a>
-[## Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb)
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb">Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)</a></h2>
+
 
 * **Coding requirements:**
 
@@ -83,7 +84,7 @@ import matplotlib.cm as cm
 * **Logistic Regression implementation**
 
 <a name="sec2"></a>
-[## Section 2 Content - Deep Learning Basics in Math, Numpy and Scikit-Learn (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section2/Section2.ipynb)
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section2/Section2.ipynb">Section 2 Content - Deep Learning Basics in Math, Numpy and Scikit-Learn (click to view full notebook)</a></h2>
 
 * **Coding requirements:**
 
@@ -167,7 +168,7 @@ from sklearn.datasets import fetch_mldata
     + Test MLP on MNIST dataset and its visualization
 
 <a name="sec3"></a>
-[## Section 3 Content - Deep Learning Basics in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section3/Section3.ipynb)
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section3/Section3.ipynb">Section 3 Content - Deep Learning Basics in Tensoflow (click to view full notebook)</a></h2>
 
 * **Coding requirements:**
 
@@ -250,7 +251,7 @@ def mlp(x, hidden_sizes, activation_fn=tf.nn.relu):
 
 
 <a name="sec4"></a>
-[## Section 4 Content - Deep Learning Advanced  in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb)
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb">Section 4 Content - Deep Learning Advanced  in Tensoflow (click to view full notebook)</a></h2>
 
 * **Coding requirements:**
 
@@ -288,5 +289,4 @@ from sklearn.manifold import TSNE
 
 
 <a name="sec5"></a>
-[## Section 5 Content (click to view full notebook)]()
-
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section5/Section5.ipynb">Section 5 Content (click to view full notebook)</a></h2>
