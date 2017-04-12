@@ -15,7 +15,7 @@ All results in Jupyter-Notebook are trained under GTX 1070, training CPUs may co
 
 
 <a name="sec1"></a>
-## [Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb)
+[## Section 1 Content - Machine Learning and Deep Learning Basics in Math and Numpy (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section1/Section1.ipynb)
 
 * **Coding requirements:**
 
@@ -83,7 +83,7 @@ import matplotlib.cm as cm
 * **Logistic Regression implementation**
 
 <a name="sec2"></a>
-## [Section 2 Content - Deep Learning Basics in Math, Numpy and Scikit-Learn (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section2/Section2.ipynb)
+[## Section 2 Content - Deep Learning Basics in Math, Numpy and Scikit-Learn (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section2/Section2.ipynb)
 
 * **Coding requirements:**
 
@@ -111,7 +111,7 @@ from sklearn.datasets import fetch_mldata
 * **Backprop in a simple MLP - Multi-layer perceptron's mathematical derivation:**
 
 <p align="center">
-  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s2_mlp.png?raw=true"/>
+  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s2_mlp.png?raw=true" width="70%"/>
 </p>
 
 * **XOR problem - A Neural network to solve the XOR problem:** (*This is a really good example to help us understand the essence of neural networks*)
@@ -167,7 +167,7 @@ from sklearn.datasets import fetch_mldata
     + Test MLP on MNIST dataset and its visualization
 
 <a name="sec3"></a>
-## [Section 3 Content - Deep Learning Basics in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section3/Section3.ipynb)
+[## Section 3 Content - Deep Learning Basics in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section3/Section3.ipynb)
 
 * **Coding requirements:**
 
@@ -239,7 +239,7 @@ def mlp(x, hidden_sizes, activation_fn=tf.nn.relu):
 * **Siamese Network in TensorFlow**
 
 <p align="center">
-  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s3_siamese.png?raw=true"/>
+  <img src="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/imgs/s3_siamese.png?raw=true" width="60%" height="50%"/>
 </p>
 
 * **Visualize learned features of Siamese Network with T-SNE**
@@ -250,7 +250,7 @@ def mlp(x, hidden_sizes, activation_fn=tf.nn.relu):
 
 
 <a name="sec4"></a>
-## [Section 4 Content - Deep Learning Advanced  in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb)
+[## Section 4 Content - Deep Learning Advanced  in Tensoflow (click to view full notebook)](https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb)
 
 * **Coding requirements:**
 
@@ -288,5 +288,5 @@ from sklearn.manifold import TSNE
 
 
 <a name="sec5"></a>
-## [Section 5 Content (click to view full notebook)]()
+[## Section 5 Content (click to view full notebook)]()
 
