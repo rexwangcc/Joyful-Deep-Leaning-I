@@ -30,7 +30,7 @@ import matplotlib.cm as cm
 
 * **Closed-Form Maximum Likelihood mathematical derivation:**
 
-    + <img src="svgs/e569bf2f55e8050e6d778a5424437294.svg?invert_in_darkmode" align=middle width=120.44191500000001pt height=27.852989999999977pt/> for <img src="svgs/92106cc04e070ebc1780e6da06cd51b6.svg?invert_in_darkmode" align=middle width=39.418335pt height=21.10812pt/>
+    + <img src="svgs/e569bf2f55e8050e6d778a5424437294.svg?invert_in_darkmode?raw=true" align=middle width=120.44191500000001pt height=27.852989999999977pt/> for <img src="svgs/92106cc04e070ebc1780e6da06cd51b6.svg?invert_in_darkmode" align=middle width=39.418335pt height=21.10812pt/>
 
     + <img src="svgs/e67248bfc0ca777acca8a8424eb0cc37.svg?invert_in_darkmode" align=middle width=89.005455pt height=27.720329999999983pt/> for <img src="svgs/261d4cde744b07a079970d5243f18a7d.svg?invert_in_darkmode" align=middle width=69.431175pt height=22.745910000000016pt/>
 
