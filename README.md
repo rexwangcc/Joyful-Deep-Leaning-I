@@ -6,8 +6,8 @@ This repository is a collection of my useful resources of Deep Learning in Tenso
 1. [Machine Learning and Deep Learning Basics in Math and Numpy](#sec1)
 2. [Deep Learning Basics in Math, Numpy and Scikit-Learn](#sec2)
 3. [Deep Learning Basics in Tensoflow](#sec3)
-4. [Deep Learning Advanced  in Tensoflow](#sec4)
-5. [Idle](#sec5)
+4. [Deep Learning Advanced  in Tensoflow - CNN and Tensorboard](#sec4)
+5. [Deep Learning Advanced  in Tensoflow - RNN, LSTM and RBM](#sec5)
 
 
 
@@ -260,7 +260,7 @@ def mlp(x, hidden_sizes, activation_fn=tf.nn.relu):
 
 
 <a name="sec4"></a>
-<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb">Section 4 Content - Deep Learning Advanced  in Tensoflow (click to view full notebook)</a></h2>
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section4/Section4.ipynb">Section 4 Content - Deep Learning Advanced  in Tensoflow - CNN and Tensorfoard (click to view full notebook)</a></h2>
 
 * **Coding requirements:**
 
@@ -298,4 +298,4 @@ from sklearn.manifold import TSNE
 
 
 <a name="sec5"></a>
-<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section5/Section5.ipynb">Section 5 Content (click to view full notebook)</a></h2>
+<h2><a href="https://github.com/rexwangcc/Joyful-Deep-Leaning/blob/master/Section5/Section5.ipynb">Section 5 Content - Deep Learning Advanced  in Tensoflow - RNN, LSTM and RBM (click to view full notebook)</a></h2>
