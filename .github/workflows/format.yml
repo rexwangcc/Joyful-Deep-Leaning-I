@@ -30,7 +30,7 @@ jobs:
           echo "${{ secrets.ssh_key }}" > ~/.ssh/ssh_key
           chmod 600 ~/.ssh/ssh_key
           echo """
-          Host github.com
+          Host Joyful-Deep-Leaning-I.github.com
             HostName github.com
             User git
             IdentityFile ~/.ssh/ssh_key
