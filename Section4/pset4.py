@@ -8,11 +8,8 @@ def ugly():
     if 1 == 1:
         print(99)
     return None
-
-
 def ugly2():
-    if 1 == 1:
-        print(99)
+    if 1 == 1: print(99)
     return None
 
 
