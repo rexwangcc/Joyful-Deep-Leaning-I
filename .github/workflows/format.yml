@@ -2,6 +2,8 @@ name: Format Python Files
 on:
   pull_request:
     types: [opened]
+    branches:
+      - master
     paths:
       - "**.py"
 
