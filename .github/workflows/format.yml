@@ -22,10 +22,6 @@ jobs:
         with:
           python-version: 3.7
 
-      - name: Make sure the branch name is correct
-        run: |
-          echo "${{ github.head_ref }}"
-
       - name: Commit format results
         run: |
           pip install black
@@ -47,4 +43,4 @@ jobs:
 
           git add .
           git commit -m "[skip ci] enforce code format"
-          git push origin "${{ github.head_ref }}"
+          git push
