@@ -32,13 +32,17 @@ jobs:
           echo "${{ secrets.ssh_key }}" > ~/.ssh/ssh_key
           chmod 600 ~/.ssh/ssh_key
           echo """
-          Host Joyful-Deep-Leaning-I.github.com
+          Host github.com
             HostName github.com
             User git
             IdentityFile ~/.ssh/ssh_key
           """ > ~/.ssh/config
 
           black ./
+
+          git config --global user.email "mybot@users.noreply.github.com"
+          git config --global user.name "My Bot"
+
           git add .
           git commit -m "[skip ci] enforce code format"
           git push origin "${{ github.head_ref }}"
