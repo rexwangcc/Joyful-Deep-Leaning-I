@@ -1,0 +1,43 @@
+name: Format Python Files
+on:
+  pull_request:
+    types: [opened]
+    paths:
+      - "**.py"
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Setup black (or yapfm whatever you want)
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+        run: |
+          pip install black
+
+      - name: Make sure the branch name is correct
+        run: |
+          echo "${{ github.head_ref }}"
+
+      - name: Setup git with SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ssh_key }}" > ~/.ssh/ssh_key
+          chmod 600 ~/.ssh/ssh_key
+          echo """
+          Host github.com
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/ssh_key
+          """ > ~/.ssh/config
+
+      - name: Commit format results
+        run: |
+          git add .
+          git commit -m "[skip ci] enforce code format"
+          git push origin "${{ github.head_ref }}"
+
