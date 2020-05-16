@@ -37,7 +37,7 @@ jobs:
 
       - name: Commit format results
         run: |
+          black ./
           git add .
           git commit -m "[skip ci] enforce code format"
           git push origin "${{ github.head_ref }}"
-
