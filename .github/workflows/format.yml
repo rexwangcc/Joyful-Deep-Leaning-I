@@ -1,0 +1,46 @@
+name: Format Python Files
+on:
+  push:
+  pull_request:
+    types: [opened]
+    branches:
+      - master
+    paths:
+      - "**.py"
+
+jobs:
+  lint-and-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Setup black (or yapfm whatever you want)
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+
+      - name: Commit format results
+        run: |
+          pip install black
+
+          mkdir -p ~/.ssh
+          echo "${{ secrets.ssh_key }}" > ~/.ssh/ssh_key
+          chmod 600 ~/.ssh/ssh_key
+          echo """
+          Host github.com
+            HostName github.com
+            User git
+            IdentityFile ~/.ssh/ssh_key
+          """ > ~/.ssh/config
+
+          black ./
+
+          git config --global user.email "mybot@users.noreply.github.com"
+          git config --global user.name "My Bot"
+
+          git add .
+          git commit -m "[skip ci] enforce code format"
+          git push
