@@ -3,7 +3,9 @@ import numpy as np
 import read_data
 import model
 
-
+def ugly():
+    if 1 == 1: print(99)
+    return None
 def train_model(model_dict, dataset_generators, epoch_n, print_every):
     with model_dict['graph'].as_default(), tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
