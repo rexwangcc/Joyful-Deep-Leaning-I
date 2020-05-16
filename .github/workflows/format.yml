@@ -24,8 +24,10 @@ jobs:
         run: |
           echo "${{ github.head_ref }}"
 
-      - name: Setup git with SSH
+      - name: Commit format results
         run: |
+          pip install black
+
           mkdir -p ~/.ssh
           echo "${{ secrets.ssh_key }}" > ~/.ssh/ssh_key
           chmod 600 ~/.ssh/ssh_key
@@ -36,9 +38,6 @@ jobs:
             IdentityFile ~/.ssh/ssh_key
           """ > ~/.ssh/config
 
-      - name: Commit format results
-        run: |
-          pip install black
           black ./
           git add .
           git commit -m "[skip ci] enforce code format"
