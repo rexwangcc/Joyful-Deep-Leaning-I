@@ -17,7 +17,9 @@ class TwoLayerMLP(object):
     The outputs of the second fully-connected layer are the scores for each class.
     """
 
-    def __init__(self, input_size, hidden_size, output_size, std=1e-4, activation='relu'):
+    def __init__(
+        self, input_size, hidden_size, output_size, std=1e-4, activation="relu"
+    ):
         """
         Initialize the model. Weights are initialized to small random values and
         biases are initialized to zero. Weights and biases are stored in the
@@ -34,10 +36,10 @@ class TwoLayerMLP(object):
         - output_size: The number of classes C.
         """
         self.params = {}
-        self.params['W1'] = std * np.random.randn(input_size, hidden_size)
-        self.params['b1'] = np.zeros(hidden_size)
-        self.params['W2'] = std * np.random.randn(hidden_size, output_size)
-        self.params['b2'] = np.zeros(output_size)
+        self.params["W1"] = std * np.random.randn(input_size, hidden_size)
+        self.params["b1"] = np.zeros(hidden_size)
+        self.params["W2"] = std * np.random.randn(hidden_size, output_size)
+        self.params["b2"] = np.zeros(output_size)
         self.activation = activation
 
     def loss(self, X, y=None, reg=0.0):
@@ -64,8 +66,8 @@ class TwoLayerMLP(object):
           with respect to the loss function; has the same keys as self.params.
         """
         # Unpack variables from the params dictionary
-        W1, b1 = self.params['W1'], self.params['b1']
-        W2, b2 = self.params['W2'], self.params['b2']
+        W1, b1 = self.params["W1"], self.params["b1"]
+        W2, b2 = self.params["W2"], self.params["b2"]
         _, C = W2.shape
         N, D = X.shape
 
@@ -80,21 +82,21 @@ class TwoLayerMLP(object):
         z1 = np.dot(X, W1) + b1  # 1st layer activation, N*H
 
         # 1st layer nonlinearity, N*H
-        if self.activation is 'relu':
+        if self.activation is "relu":
             hidden = np.maximum(0, z1)
-        elif self.activation is 'softplus':
+        elif self.activation is "softplus":
             # TODO please implement
             # raise NotImplementedError('put your own code here!')
             # Use Logsum to escape from overflow!!!
             hidden = np.logaddexp(0, z1)
-        elif self.activation is 'sigmoid':
+        elif self.activation is "sigmoid":
             # TODO please implement
             # raise NotImplementedError('put your own code here!')
             # Use Logsum to escape from overflow!!!
             hidden = np.exp(-np.logaddexp(0, -z1))
             # hidden = 1./(1.+np.exp(-z1))
         else:
-            raise ValueError('Unknown activation type')
+            raise ValueError("Unknown activation type")
 
         scores = np.dot(hidden, W2) + b2  # 2nd layer activation, N*C
         #######################################################################
@@ -118,8 +120,7 @@ class TwoLayerMLP(object):
         # compute the class probabilities
         num_train = N
         scores -= np.max(scores, axis=1, keepdims=True)
-        probabilities = np.exp(scores) / \
-            np.sum(np.exp(scores), axis=1, keepdims=True)
+        probabilities = np.exp(scores) / np.sum(np.exp(scores), axis=1, keepdims=True)
         correct_class_probabilities = probabilities[range(num_train), y]
 
         loss = np.sum(-np.log(correct_class_probabilities)) / num_train
@@ -145,54 +146,68 @@ class TwoLayerMLP(object):
         dscore[range(num_train), y] -= 1
         dscore /= num_train
 
-        dW2 = np.dot(hidden.T, probabilities) + reg * \
-            W2     # partial derivative of loss wrt. W2
-        db2 = np.sum(probabilities, axis=0)     # and so on...
+        dW2 = (
+            np.dot(hidden.T, probabilities) + reg * W2
+        )  # partial derivative of loss wrt. W2
+        db2 = np.sum(probabilities, axis=0)  # and so on...
 
         # hidden layer should be the weight times probabilities (output layer)
         dhidden = dscore.dot(W2.T)
 
-        if self.activation is 'relu':
+        if self.activation is "relu":
             dz1 = dhidden
             dz1[z1 <= 0] = 0
             # reverse the max() gate
             # bug: thanks Ruidi Chen for pointing it out!
             # dz1[hidden <= 0] = 0
-        elif self.activation is 'softplus':
+        elif self.activation is "softplus":
             # TODO please implement
             # Derivative should be logistic function: np.exp(-np.logaddexp(0,
             # -z))
 
             dz1 = np.multiply(dhidden, np.exp(-np.logaddexp(0, -z1)))
             # raise NotImplementedError('put your own code here!')
-        elif self.activation is 'sigmoid':
+        elif self.activation is "sigmoid":
             # TODO please implement
             # Derivative should be function: np.multiply(np.exp(-np.logaddexp(0, -x)),
             # (1.-np.exp(-np.logaddexp(0, -x)))
-            dz1 = np.multiply(dhidden, np.multiply(np.exp(-np.logaddexp(0, -z1)),
-                                                   (1. - np.exp(-np.logaddexp(0, -z1)))))
+            dz1 = np.multiply(
+                dhidden,
+                np.multiply(
+                    np.exp(-np.logaddexp(0, -z1)), (1.0 - np.exp(-np.logaddexp(0, -z1)))
+                ),
+            )
             # raise NotImplementedError('put your own code here!')
         else:
-            raise ValueError('Unknown activation type')
+            raise ValueError("Unknown activation type")
 
         # first layer
         dW1 = np.dot(X.T, dz1) + reg * W1
         db1 = np.sum(dz1, axis=0)
 
-        grads['W2'] = dW2
-        grads['b2'] = db2
-        grads['W1'] = dW1
-        grads['b1'] = db1
+        grads["W2"] = dW2
+        grads["b2"] = db2
+        grads["W1"] = dW1
+        grads["b1"] = db1
         #######################################################################
         #                            END OF YOUR CODE
         #######################################################################
 
         return loss, grads
 
-    def train(self, X, y, X_val, y_val,
-              learning_rate=1e-3, learning_rate_decay=0.95,
-              reg=1e-5, num_epochs=10,
-              batch_size=200, verbose=False):
+    def train(
+        self,
+        X,
+        y,
+        X_val,
+        y_val,
+        learning_rate=1e-3,
+        learning_rate_decay=0.95,
+        reg=1e-5,
+        num_epochs=10,
+        batch_size=200,
+        verbose=False,
+    ):
         """
         Train this neural network using stochastic gradient descent.
 
@@ -232,7 +247,7 @@ class TwoLayerMLP(object):
                 y_batch = None
 
                 # Create a random minibatch
-                idx = perm[it * batch_size:(it + 1) * batch_size]
+                idx = perm[it * batch_size : (it + 1) * batch_size]
                 X_batch = X[idx, :]
                 y_batch = y[idx]
 
@@ -245,7 +260,7 @@ class TwoLayerMLP(object):
                     self.params[param] -= grads[param] * learning_rate
 
                 # record gradient magnitude (Frobenius) for W1
-                grad_magnitude_history.append(np.linalg.norm(grads['W1']))
+                grad_magnitude_history.append(np.linalg.norm(grads["W1"]))
 
             # Every epoch, check train and val accuracy and decay learning rate.
             # Check accuracy
@@ -254,17 +269,19 @@ class TwoLayerMLP(object):
             train_acc_history.append(train_acc)
             val_acc_history.append(val_acc)
             if verbose:
-                print('Epoch %d: loss %f, train_acc %f, val_acc %f' % (
-                    epoch + 1, loss, train_acc, val_acc))
+                print(
+                    "Epoch %d: loss %f, train_acc %f, val_acc %f"
+                    % (epoch + 1, loss, train_acc, val_acc)
+                )
 
             # Decay learning rate
             learning_rate *= learning_rate_decay
 
         return {
-            'loss_history': loss_history,
-            'grad_magnitude_history': grad_magnitude_history,
-            'train_acc_history': train_acc_history,
-            'val_acc_history': val_acc_history,
+            "loss_history": loss_history,
+            "grad_magnitude_history": grad_magnitude_history,
+            "train_acc_history": train_acc_history,
+            "val_acc_history": val_acc_history,
         }
 
     def predict(self, X):
@@ -288,8 +305,8 @@ class TwoLayerMLP(object):
         # TODO: Implement this function; it should be VERY simple!
         #######################################################################
         # raise NotImplementedError('put your own code here!')
-        h1 = np.maximum(X.dot(self.params['W1']) + self.params['b1'], 0)
-        output = np.maximum(0, h1.dot(self.params['W2']) + self.params['b2'])
+        h1 = np.maximum(X.dot(self.params["W1"]) + self.params["b1"], 0)
+        output = np.maximum(0, h1.dot(self.params["W2"]) + self.params["b2"])
         y_pred = np.argmax(output, axis=1)
         #######################################################################
         #                              END OF YOUR CODE
